@@ -67,7 +67,7 @@ const DashboardLayout = () => {
   const { onToggleMode } = useSettings();
   const [selected, setSelected] = useState(0);
   return (
-    <>
+    <Stack direction={"row"}>
       <Box
         p={2}
         sx={{
@@ -163,13 +163,13 @@ const DashboardLayout = () => {
             </Stack>
           </Stack>
           <Stack spacing={3}>
-            <AntSwitch onClick={() => onToggleMode()} defaultChecked />
+            <AntSwitch onChange={() => onToggleMode()} defaultChecked />
             <Avatar src={faker.image.avatar()} />
           </Stack>
         </Stack>
       </Box>
       <Outlet />
-    </>
+    </Stack>
   );
 };
 

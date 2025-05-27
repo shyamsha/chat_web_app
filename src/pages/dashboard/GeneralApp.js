@@ -1,10 +1,13 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
+import Chats from "./Chats";
 
 const GeneralApp = () => {
   return (
     <>
-      <Box></Box>
+      <Stack direction={"row"} sx={{ width: "100%" }}>
+        <Chats />
+      </Stack>
     </>
   );
 };
