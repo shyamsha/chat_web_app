@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -14,7 +14,14 @@ root.render(
   <React.StrictMode>
     <HelmetProvider>
       <SettingsProvider>
-        <BrowserRouter>
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+            v7_fetcherPersist: true,
+            v7_partialHydration: true,
+          }}
+        >
           <App />
         </BrowserRouter>
       </SettingsProvider>
