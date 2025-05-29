@@ -1,5 +1,5 @@
-import { Box, Stack } from "@mui/material";
 import React from "react";
+import { Box, Stack } from "@mui/material";
 import { Chat_History } from "../../data";
 import {
   DocMsg,
@@ -8,7 +8,7 @@ import {
   ReplyMsg,
   TextMsg,
   Timeline,
-} from "./MsgTypes";
+} from "./MessageTypes";
 
 function Message() {
   return (

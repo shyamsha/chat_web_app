@@ -1,5 +1,5 @@
 import React from "react";
-import { DownloadSimple, Image, Stack } from "phosphor-react";
+import { DownloadSimple, Image } from "phosphor-react";
 import {
   alpha,
   Box,
@@ -7,6 +7,7 @@ import {
   IconButton,
   Typography,
   useTheme,
+  Stack,
 } from "@mui/material";
 
 function Timeline({ el }) {
@@ -21,7 +22,6 @@ function Timeline({ el }) {
     </Stack>
   );
 }
-
 function TextMsg({ el }) {
   const theme = useTheme();
   return (
