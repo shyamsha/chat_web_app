@@ -1,16 +1,13 @@
-import React from "react";
-import {
-  Box,
-  IconButton,
-  InputAdornment,
-  Stack,
-  useTheme,
-} from "@mui/material";
-import { LinkSimple, PaperPlaneTilt, Smiley } from "phosphor-react";
-import StyledInput from "../StyledInput";
+import React, { useState } from "react";
+import { Box, IconButton, Stack, useTheme } from "@mui/material";
+import { PaperPlaneTilt } from "phosphor-react";
+import ChatInput from "./ChatInput";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
 function Footer() {
   const theme = useTheme();
+  const [openPicker, setOpenPicker] = useState(false);
   return (
     <Box
       p={2}
@@ -24,28 +21,25 @@ function Footer() {
       }}
     >
       <Stack direction={"row"} alignItems={"center"} spacing={3}>
-        <StyledInput
-          fullWidth
-          placeholder="Message..."
-          variant="filled"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <IconButton>
-                  <LinkSimple />
-                </IconButton>
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton>
-                  <Smiley />
-                </IconButton>
-              </InputAdornment>
-            ),
-            disableUnderline: true,
-          }}
-        />
+        {/* chat input */}
+        <Stack sx={{ width: "100%" }}>
+          <Box
+            sx={{
+              display: openPicker ? "inline" : "none",
+              zIndex: 10,
+              position: "fixed",
+              bottom: 81,
+              right: 100,
+            }}
+          >
+            <Picker
+              theme={theme.palette.mode}
+              data={data}
+              onEmojiSelect={console.log}
+            />
+          </Box>
+          <ChatInput openPicker={openPicker} setOpenPicker={setOpenPicker} />
+        </Stack>
         <Box
           sx={{
             height: 48,
