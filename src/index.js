@@ -4,7 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "./redux/store";
 // contexts
 import SettingsProvider from "./contexts/SettingsContext";
 
@@ -13,18 +14,20 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <SettingsProvider>
-        <BrowserRouter
-          future={{
-            v7_startTransition: true,
-            v7_relativeSplatPath: true,
-            v7_fetcherPersist: true,
-            v7_partialHydration: true,
-          }}
-        >
-          <App />
-        </BrowserRouter>
-      </SettingsProvider>
+      <ReduxProvider store={store}>
+        <SettingsProvider>
+          <BrowserRouter
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true,
+              v7_fetcherPersist: true,
+              v7_partialHydration: true,
+            }}
+          >
+            <App />
+          </BrowserRouter>
+        </SettingsProvider>
+      </ReduxProvider>
     </HelmetProvider>
   </React.StrictMode>
 );
