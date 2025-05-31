@@ -24,10 +24,6 @@ const appSlice = createSlice({
   },
 });
 
-export const { toggleSideBar, updateSideBarType, updateTab } = appSlice.actions;
-
-export default appSlice.reducer;
-
 export function ToggleSidebar() {
   return async (dispatch, getState) => {
     dispatch(appSlice.actions.toggleSideBar());
@@ -38,3 +34,7 @@ export function UpdateSidebarType(type) {
     dispatch(appSlice.actions.updateSideBarType({ type }));
   };
 }
+
+export const { toggleSideBar, updateSideBarType, updateTab } = appSlice.actions;
+
+export default appSlice.reducer;
