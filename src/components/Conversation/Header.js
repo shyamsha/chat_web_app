@@ -21,7 +21,7 @@ function Header() {
     <Box
       p={2}
       sx={{
-        height: 100,
+        height: 73,
         width: "100%",
         backgroundColor:
           theme.palette.mode === "light"
