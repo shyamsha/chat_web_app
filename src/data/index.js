@@ -7,6 +7,14 @@ import {
   SignOut,
   User,
   Users,
+  Note,
+  Bell,
+  Lock,
+  Key,
+  PencilCircle,
+  Image,
+  Keyboard,
+  Info,
 } from "phosphor-react";
 
 const Profile_Menu = [
@@ -330,6 +338,136 @@ const Shared_links = [
   },
 ];
 
+const Settings_List = [
+  {
+    key: 0,
+    icon: <Bell size={20} />,
+    title: "Notifications",
+  },
+  {
+    key: 1,
+    icon: <Lock size={20} />,
+    title: "Privacy",
+  },
+  {
+    key: 2,
+    icon: <Key size={20} />,
+    title: "Security",
+  },
+  {
+    key: 3,
+    icon: <PencilCircle size={20} />,
+    title: "Theme",
+  },
+  {
+    key: 4,
+    icon: <Image size={20} />,
+    title: "Chat Wallpaper",
+  },
+  {
+    key: 5,
+    icon: <Note size={20} />,
+    title: "Request Account Info",
+  },
+  {
+    key: 6,
+    icon: <Keyboard size={20} />,
+    title: "Keyboard Shortcuts",
+  },
+  {
+    key: 7,
+    icon: <Info size={20} />,
+    title: "Help",
+  },
+];
+const Keyboard_Shortcuts = [
+  {
+    key: 0,
+    title: "Mark as unread",
+    combination: ["Cmd", "Shift", "U"],
+  },
+  {
+    key: 1,
+    title: "Mute",
+    combination: ["Cmd", "Shift", "M"],
+  },
+  {
+    key: 2,
+    title: "Archive Chat",
+    combination: ["Cmd", "Shift", "E"],
+  },
+  {
+    key: 3,
+    title: "Delete Chat",
+    combination: ["Cmd", "Shift", "D"],
+  },
+  {
+    key: 4,
+    title: "Pin Chat",
+    combination: ["Cmd", "Shift", "P"],
+  },
+  {
+    key: 5,
+    title: "Search",
+    combination: ["Cmd", "F"],
+  },
+  {
+    key: 6,
+    title: "Search Chat",
+    combination: ["Cmd", "Shift", "F"],
+  },
+  {
+    key: 7,
+    title: "Next Chat",
+    combination: ["Cmd", "N"],
+  },
+  {
+    key: 8,
+    title: "Next Step",
+    combination: ["Ctrl", "Tab"],
+  },
+  {
+    key: 9,
+    title: "Previous Step",
+    combination: ["Ctrl", "Shift", "Tab"],
+  },
+  {
+    key: 10,
+    title: "New Group",
+    combination: ["Cmd", "Shift", "N"],
+  },
+  {
+    key: 11,
+    title: "Profile & About",
+    combination: ["Cmd", "P"],
+  },
+  {
+    key: 12,
+    title: "Increase speed of voice message",
+    combination: ["Shift", "."],
+  },
+  {
+    key: 13,
+    title: "Decrease speed of voice message",
+    combination: ["Shift", ","],
+  },
+  {
+    key: 14,
+    title: "Settings",
+    combination: ["Shift", "S"],
+  },
+  {
+    key: 15,
+    title: "Emoji Panel",
+    combination: ["Cmd", "E"],
+  },
+  {
+    key: 16,
+    title: "Sticker Panel",
+    combination: ["Cmd", "S"],
+  },
+];
+
 export {
   Profile_Menu,
   Nav_Setting,
@@ -339,4 +477,6 @@ export {
   Message_options,
   Shared_docs,
   Shared_links,
+  Settings_List,
+  Keyboard_Shortcuts,
 };
