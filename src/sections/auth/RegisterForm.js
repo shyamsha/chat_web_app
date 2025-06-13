@@ -1,36 +1,31 @@
 import React, { useState } from "react";
-import FormProvider, { RHFTextField } from "../../components/hook-form";
-import { useForm } from "react-hook-form";
 import * as Yup from "yup";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
+  Stack,
   Alert,
-  Button,
   IconButton,
   InputAdornment,
-  Link,
-  Stack,
+  Button,
 } from "@mui/material";
+import FormProvider, { RHFTextField } from "../../components/hook-form";
 import { Eye, EyeSlash } from "phosphor-react";
-import { Link as RouterLink } from "react-router-dom";
-// import { LoadingButton } from "@mui/lab";
 
-const LoginForm = () => {
+function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
-
   const LoginSchema = Yup.object().shape({
+    firstName: Yup.string().required("First name required"),
+    lastName: Yup.string().required("Last name required"),
     email: Yup.string()
-      .email("Email must be a valid email address")
       .required("Email is required")
-      .test("email", "Email must be a valid email address", (value) => {
-        // Custom validation logic for email
-        return value && value.includes("@");
-      }),
-    password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
+      .email("Email must be a valid email address"),
+    password: Yup.string().required("Password is required"),
   });
+
   const defaultValues = {
+    firstName: "",
+    lastName: "",
     email: "demo@tawk.com",
     password: "demo1234",
   };
@@ -39,6 +34,7 @@ const LoginForm = () => {
     resolver: yupResolver(LoginSchema),
     defaultValues,
   });
+
   const {
     reset,
     setError,
@@ -48,9 +44,8 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       // submit data to backend
-      // dispatch(LoginUser(data));
+      // dispatch(RegisterFormUser(data));
     } catch (error) {
       console.error(error);
       reset();
@@ -60,14 +55,20 @@ const LoginForm = () => {
       });
     }
   };
-
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Stack spacing={3}>
+      <Stack spacing={3} mb={4}>
         {!!errors.afterSubmit && (
           <Alert severity="error">{errors.afterSubmit.message}</Alert>
         )}
-        <RHFTextField name="email" label="Email" />
+
+        <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+          <RHFTextField name="firstName" label="First name" />
+          <RHFTextField name="lastName" label="Last name" />
+        </Stack>
+
+        <RHFTextField name="email" label="Email address" />
+
         <RHFTextField
           name="password"
           label="Password"
@@ -86,17 +87,7 @@ const LoginForm = () => {
           }}
         />
       </Stack>
-      <Stack alignItems="flex-end" sx={{ my: 2 }}>
-        <Link
-          component={RouterLink}
-          to="/auth/reset-password"
-          variant="body2"
-          color="inherit"
-          underline="always"
-        >
-          Forgot password?
-        </Link>
-      </Stack>
+
       <Button
         fullWidth
         color="inherit"
@@ -115,10 +106,10 @@ const LoginForm = () => {
           },
         }}
       >
-        Login
+        Create Account
       </Button>
     </FormProvider>
   );
-};
+}
 
-export default LoginForm;
+export default RegisterForm;
