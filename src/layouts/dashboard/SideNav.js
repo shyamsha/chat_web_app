@@ -15,12 +15,50 @@ import { Gear } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 import useSettings from "../../hooks/useSettings";
 import AntSwitch from "../../components/AntSwitch";
+import { useNavigate } from "react-router-dom";
+
+function getPathname(index) {
+  switch (index) {
+    case 0:
+      return "/app";
+    case 1:
+      return "/group";
+    case 2:
+      return "/call";
+    case 3:
+      return "/settings";
+    default:
+      return "/app";
+  }
+}
+function handleNavigation(index, navigate) {
+  const path = getPathname(index);
+  if (path) {
+    navigate(path);
+  }
+}
+
+function handleMenuNavigation(index, navigate) {
+  switch (index) {
+    case 0:
+      return navigate("/profile");
+    case 1:
+      return navigate("/settings");
+    case 2:
+      // TODO: Handle logout logic here
+      console.log("Logout clicked");
+      return navigate("/auth/login");
+    default:
+      return navigate("/auth/login");
+  }
+}
 
 function SideNav() {
   const theme = useTheme();
   const { onToggleMode } = useSettings();
   const [selected, setSelected] = useState(0);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -80,7 +118,10 @@ function SideNav() {
                 </Box>
               ) : (
                 <IconButton
-                  onClick={() => setSelected(ele.index)}
+                  onClick={() => {
+                    setSelected(ele.index);
+                    handleNavigation(ele.index, navigate);
+                  }}
                   key={ele.index}
                   sx={{
                     width: "max-content",
@@ -109,7 +150,10 @@ function SideNav() {
               </Box>
             ) : (
               <IconButton
-                onClick={() => setSelected(3)}
+                onClick={() => {
+                  setSelected(3);
+                  handleNavigation(3, navigate);
+                }}
                 sx={{
                   width: "max-content",
                   color:
@@ -154,10 +198,13 @@ function SideNav() {
               {Profile_Menu.map((el) => (
                 <MenuItem onClick={handleClose} key={el.title}>
                   <Stack
-                    sx={{ width: 100 }}
+                    sx={{ width: 100, cursor: "pointer" }}
                     direction={"row"}
                     alignItems={"center"}
                     justifyContent={"space-between"}
+                    onClick={() => {
+                      handleMenuNavigation(el.id, navigate);
+                    }}
                   >
                     <span>{el.title}</span>
                     {el.icon}
