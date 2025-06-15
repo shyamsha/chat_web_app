@@ -467,6 +467,21 @@ const Keyboard_Shortcuts = [
     combination: ["Cmd", "S"],
   },
 ];
+const Tags_Option = [
+  "Toy Story 3",
+  "Logan",
+  "Full Metal Jacket",
+  "Dangal",
+  "The Sting",
+  "2001: A Space Odyssey",
+  "Singin' in the Rain",
+  "Toy Story",
+  "Bicycle Thieves",
+  "The Kid",
+  "Inglourious Basterds",
+  "Snatch",
+  "3 Idiots",
+];
 
 export {
   Profile_Menu,
@@ -477,6 +492,7 @@ export {
   Message_options,
   Shared_docs,
   Shared_links,
+  Tags_Option,
   Settings_List,
   Keyboard_Shortcuts,
 };
